@@ -15,4 +15,6 @@ export const userRoutes = ({
 }: UserRouteParams) =>
     new Elysia({ prefix: '/users' })
         .use(authMiddleware(sessionService))
-        .post('/details', ({ body }) => createUserDetailUseCase.execute(body))
+        .post('/details', ({ body, user }) =>
+            createUserDetailUseCase.execute(user, body),
+        )

@@ -24,13 +24,13 @@ export class SignInUseCase {
             throw new UnauthorizedException()
         }
 
-        const session =
-            await this.providers.sessionService.generateAndSave(user)
-
         delete user['password']
         delete user['createdAt']
         delete user['updatedAt']
 
-        return { session, user }
+        const session =
+            await this.providers.sessionService.generateAndSave(user)
+
+        return { session }
     }
 }

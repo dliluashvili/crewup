@@ -44,7 +44,6 @@ const signInUseCase = new SignInUseCase({
 })
 
 const createUserDetailUseCase = new CreateUserDetailUseCase({
-    sessionService,
     resumeService,
     userSkillsRepo,
     userLanguagesRepo,

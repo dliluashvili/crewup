@@ -25,13 +25,9 @@ export class SignUpUseCase {
         delete user['createdAt']
         delete user['updatedAt']
 
-        const session = this.providers.sessionService.generate()
+        const session =
+            await this.providers.sessionService.generateAndSave(user)
 
-        await this.providers.sessionService.generateAndSave(user)
-
-        return {
-            session,
-            user,
-        }
+        return { session }
     }
 }

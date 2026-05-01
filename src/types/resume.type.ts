@@ -49,6 +49,13 @@ export interface ParsedResumeProfessionalLinks {
     artstation: string
 }
 
+export class ParsedResumeLanguage {
+    name: string
+    level: string
+}
+
+export type ParsedResumeLanguages = Array<ParsedResumeLanguage>
+
 export class ParsedResume {
     name: string
     email: string
@@ -60,7 +67,7 @@ export class ParsedResume {
     skills: ParsedResumeSkills
     experiences: ParsedResumeExperiences
     education: ParsedResumeEducations
-    languages: []
+    languages: ParsedResumeLanguages
     social_network_links: ParsedResumeSocialLinks
     professional_links: ParsedResumeProfessionalLinks
 }

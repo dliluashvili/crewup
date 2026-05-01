@@ -19,6 +19,6 @@ export const authMiddleware = (sessionService: SessionService) => {
             throw new ForbiddenException()
         }
 
-        return { authed: true }
+        return { user, sessionId }
     })
 }
