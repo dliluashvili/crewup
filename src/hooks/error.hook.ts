@@ -4,7 +4,7 @@ import { UnauthorizedException } from '../exceptions/unauthorized.exception'
 import { errorMapping } from '../utils/error.utils'
 import { ErrorValidator } from '../types'
 
-export const errorInterceptor: ErrorHandler = async ({ error, code }) => {
+export const errorHook: ErrorHandler = async ({ error, code }) => {
     if (code === 'VALIDATION') {
         const proto = Object.getPrototypeOf(error)
         const response = proto.toResponse?.call(error)

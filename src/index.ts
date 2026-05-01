@@ -4,7 +4,7 @@ import { UserService } from './services/user.service'
 import { SessionService } from './services/session.service'
 import { SignUpUseCase } from './usecases/sign-up.usecase'
 import { UserRepo } from './repo/user.repo'
-import { errorInterceptor } from './interceptors/error.interceptor'
+import { errorHook } from './hooks'
 import { ResumeService } from './services/resume.service'
 import { CreateUserDetailUseCase } from './usecases/create-user-detail.usecase'
 import { UserSkillsRepo } from './repo/user-skills.repo'
@@ -54,7 +54,7 @@ const _userRoutes = userRoutes({ createUserDetailUseCase })
 const _authRoutes = authRoutes({ signUpUseCase, signInUseCase })
 
 const app = new Elysia({ prefix: 'api/v1' })
-    .onError(errorInterceptor)
+    .onError(errorHook)
     .use(_authRoutes)
     .use(_userRoutes)
     .get('/', () => 'Hello Elysia')
