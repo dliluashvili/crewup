@@ -6,7 +6,7 @@ interface UseCases {
 }
 
 export const userRoutes = (useCases: UseCases) => {
-    const {  createUserDetailUseCase } = useCases
+    const { createUserDetailUseCase } = useCases
 
     return new Elysia({ prefix: '/users' }).post('/details', ({ body }) =>
         createUserDetailUseCase.execute(body),

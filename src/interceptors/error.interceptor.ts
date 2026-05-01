@@ -1,20 +1,21 @@
-import type { ErrorHandler, ValidationError } from 'elysia'
+import type { ErrorHandler } from 'elysia'
 import { ConflictException } from '../exceptions/conflict.exception'
 import { UnauthorizedException } from '../exceptions/unauthorized.exception'
 import { errorMapping } from '../utils/error.utils'
+import { ErrorValidator } from '../types'
 
-export const errorInterceptor: ErrorHandler = ({ error, code }) => {
+export const errorInterceptor: ErrorHandler = async ({ error, code }) => {
     if (code === 'VALIDATION') {
-        const errorEntries = (error.validator as any)?.schema?.entries
+        const proto = Object.getPrototypeOf(error)
+        const response = proto.toResponse?.call(error)
+        const body = (await response.json()) as ErrorValidator
 
-        const mappedErrors = errorMapping(errorEntries)
+        const mappedErrors = errorMapping(body.errors)
 
         return Response.json(
             {
                 message: 'Validation failed',
-                details: {
-                    ...mappedErrors,
-                },
+                details: mappedErrors,
             },
             { status: 422 },
         )

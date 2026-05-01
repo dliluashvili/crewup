@@ -3,7 +3,9 @@ import { prisma } from '../prisma/client'
 import { UserWorkExperience } from '@prisma/client'
 
 export class UserWorkExperiencesRepo {
-    async create(data: CreateUserWorkExperiencesInput): Promise<UserWorkExperience> {
+    async create(
+        data: CreateUserWorkExperiencesInput,
+    ): Promise<UserWorkExperience> {
         return prisma.userWorkExperience.create({ data })
     }
 

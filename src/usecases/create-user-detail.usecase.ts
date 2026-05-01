@@ -18,7 +18,8 @@ export class CreateUserDetailUseCase {
     constructor(private readonly providers: Providers) {}
 
     // Should be file or actual data
-    execute(data: any) {
+    execute(data: unknown) {
+        console.log(data)
         return this.providers.resumeService.parse({
             filePath: `/Users/dliluash/Documents/Projects/tech-network/crewup/resume.pdf`,
             mocked: true,

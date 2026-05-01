@@ -3,7 +3,9 @@ import { prisma } from '../prisma/client'
 import { UserSocialNetworkLink } from '@prisma/client'
 
 export class UserSocialNetworksRepo {
-    async create(data: CreateUserSocialNetworksInput): Promise<UserSocialNetworkLink> {
+    async create(
+        data: CreateUserSocialNetworksInput,
+    ): Promise<UserSocialNetworkLink> {
         return prisma.userSocialNetworkLink.create({ data })
     }
 

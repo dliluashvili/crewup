@@ -1,4 +1,3 @@
-import { User } from '@prisma/client'
 import { randomBytes } from 'crypto'
 import { createClient } from 'redis'
 import { SessionUser } from '../types'
