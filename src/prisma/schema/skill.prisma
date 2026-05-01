@@ -1,0 +1,23 @@
+model Skill {
+  id    String @id @default(uuid()) @db.Uuid
+  title String @db.VarChar(255)
+
+  userSkills UserSkill[]
+
+  @@map("skills")
+}
+
+model UserSkill {
+  id         String @id @default(uuid()) @db.Uuid
+  userId     String @db.Uuid
+  skillId    String @db.Uuid
+  skillTitle String @db.VarChar(255)
+  years      Int    @db.SmallInt
+
+  user  User  @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  skill Skill @relation(fields: [skillId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  @@index([userId], map: "idx_user_skill")
+  @@index([skillId], map: "idx_skill_user")
+  @@map("user_skills")
+}

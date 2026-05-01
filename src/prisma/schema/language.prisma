@@ -1,0 +1,34 @@
+model Language {
+  id    String @id @default(uuid()) @db.Uuid
+  title String @db.VarChar(255)
+
+  userLanguages UserLanguage[]
+
+  @@map("languages")
+}
+
+model LanguageLevel {
+  id    String @id @default(uuid()) @db.Uuid
+  title String @db.VarChar(255)
+
+  userLanguages UserLanguage[]
+
+  @@map("language_levels")
+}
+
+model UserLanguage {
+  id                 String @id @default(uuid()) @db.Uuid
+  userId             String @db.Uuid
+  languageId         String @db.Uuid
+  languageTitle      String @db.VarChar(255)
+  languageLevelId    String @db.Uuid
+  languageLevelTitle String @db.VarChar(255)
+
+  user          User          @relation(fields: [userId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  language      Language      @relation(fields: [languageId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+  languageLevel LanguageLevel @relation(fields: [languageLevelId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  @@index([userId], map: "idx_user_language")
+  @@index([languageId], map: "idx_language_user")
+  @@map("user_languages")
+}

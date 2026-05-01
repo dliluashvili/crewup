@@ -1,0 +1,25 @@
+model Country {
+  id         String  @id @default(uuid()) @db.Uuid
+  title      String
+  phoneCode  String  @map("phone_code")
+  emojiU     String  @map("emoji_u")
+  native     String
+  originalId String  @map("original_id")
+  visible    Boolean @default(false)
+
+  cities City[]
+
+  @@map("countries")
+}
+
+model City {
+  id        String  @id @default(uuid()) @db.Uuid
+  title     String
+  countryId String  @db.Uuid @map("country_id")
+  visible   Boolean @default(false)
+
+  country Country @relation(fields: [countryId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+  @@index([countryId])
+  @@map("cities")
+}

@@ -1,0 +1,7 @@
+model SeniorityLevel {
+  id       String @id @default(uuid()) @db.Uuid
+  title    String @db.VarChar(255)
+  position Int    @default(0) @db.SmallInt
+
+  @@map("seniority_levels")
+}
