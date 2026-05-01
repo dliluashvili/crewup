@@ -15,7 +15,7 @@ export const errorHook: ErrorHandler = async ({ error, code }) => {
         return Response.json(
             {
                 message: 'Validation failed',
-                details: mappedErrors,
+                data: mappedErrors,
             },
             { status: 422 },
         )
