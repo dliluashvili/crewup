@@ -5,6 +5,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "bun run --watch src/index.ts",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "prettier": "prettier --check src",
+    "prettier:fix": "prettier --write src",
     "prisma:generate": "bunx prisma generate",
     "prisma:migrate": "bunx prisma migrate dev --name init"
   },
@@ -22,7 +26,11 @@
   },
   "devDependencies": {
     "@types/pg": "^8.20.0",
+    "@typescript-eslint/eslint-plugin": "^8.59.1",
+    "@typescript-eslint/parser": "^8.59.1",
     "bun-types": "latest",
+    "eslint": "^10.2.1",
+    "prettier": "^3.8.3",
     "tsx": "^4.21.0"
   },
   "module": "src/index.js",
