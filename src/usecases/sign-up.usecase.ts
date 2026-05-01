@@ -1,4 +1,4 @@
-import { ConflictException } from '../exceptions/conflict.exception'
+import { ConflictException } from '../exceptions'
 import { SignUpUseCaseInput } from '../inputs/auth.input'
 import { UserRepo } from '../repo/user.repo'
 import { SessionService } from '../services/session.service'

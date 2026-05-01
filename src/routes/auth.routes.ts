@@ -8,12 +8,12 @@ import {
 } from '../dtos/auth.dto'
 import { SignInUseCase } from '../usecases/sign-in.usecase'
 
-interface UseCases {
+interface AuthRouteParams {
     signUpUseCase: SignUpUseCase
     signInUseCase: SignInUseCase
 }
 
-export const authRoutes = (useCases: UseCases) => {
+export const authRoutes = (useCases: AuthRouteParams) => {
     const { signUpUseCase, signInUseCase } = useCases
 
     return new Elysia({ prefix: '/auth' })

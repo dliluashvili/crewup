@@ -1,4 +1,4 @@
-import { UnauthorizedException } from '../exceptions/unauthorized.exception'
+import { UnauthorizedException } from '../exceptions'
 import { SignInUseCaseInput } from '../inputs/auth.input'
 import { UserRepo } from '../repo/user.repo'
 import { SessionService } from '../services/session.service'

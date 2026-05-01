@@ -1,6 +1,9 @@
 import type { ErrorHandler } from 'elysia'
-import { ConflictException } from '../exceptions/conflict.exception'
-import { UnauthorizedException } from '../exceptions/unauthorized.exception'
+import {
+    ConflictException,
+    ForbiddenException,
+    UnauthorizedException,
+} from '../exceptions'
 import { errorMapping } from '../utils/error.utils'
 import { ErrorValidator } from '../types'
 
@@ -23,7 +26,8 @@ export const errorHook: ErrorHandler = async ({ error, code }) => {
 
     if (
         error instanceof ConflictException ||
-        error instanceof UnauthorizedException
+        error instanceof UnauthorizedException ||
+        error instanceof ForbiddenException
     ) {
         return Response.json(
             {

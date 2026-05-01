@@ -51,7 +51,7 @@ const createUserDetailUseCase = new CreateUserDetailUseCase({
 })
 
 const _authRoutes = authRoutes({ signUpUseCase, signInUseCase })
-const _userRoutes = userRoutes({ createUserDetailUseCase })
+const _userRoutes = userRoutes({ createUserDetailUseCase, sessionService })
 
 const app = new Elysia({ prefix: 'api/v1' })
     .onError(errorHook)
