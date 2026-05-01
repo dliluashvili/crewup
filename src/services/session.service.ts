@@ -1,5 +1,6 @@
 import { randomBytes } from 'crypto'
 import { createClient } from 'redis'
+
 import { SessionUser } from '../types'
 
 type RedisClient = ReturnType<typeof createClient>

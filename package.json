@@ -33,10 +33,5 @@
     "prettier": "^3.8.3",
     "tsx": "^4.21.0"
   },
-  "module": "src/index.js",
-  "prettier": {
-    "semi": false,
-    "tabWidth": 4,
-    "singleQuote": true
-  }
+  "module": "src/index.js"
 }

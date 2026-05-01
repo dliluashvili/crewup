@@ -1,7 +1,8 @@
 import { Elysia } from 'elysia'
+
+import { type SessionService } from '../services'
 import { authMiddleware } from '../middlewares'
-import { SessionService } from '../services/session.service'
-import { CreateUserDetailUseCase } from '../usecases/create-user-detail.usecase'
+import { type CreateUserDetailUseCase } from '../usecases'
 
 interface UserRouteParams {
     createUserDetailUseCase: CreateUserDetailUseCase

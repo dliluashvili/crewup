@@ -1,5 +1,6 @@
-import { prisma } from '../prisma/client'
 import { Language } from '@prisma/client'
+
+import { prisma } from '../prisma/client'
 
 export class LanguageRepo {
     async findById(id: string): Promise<Language | null> {

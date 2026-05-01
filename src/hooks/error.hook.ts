@@ -1,11 +1,12 @@
 import type { ErrorHandler } from 'elysia'
+
+import { ErrorValidator } from '../types'
+import { errorMapping } from '../utils/error.utils'
 import {
     ConflictException,
     ForbiddenException,
     UnauthorizedException,
 } from '../exceptions'
-import { errorMapping } from '../utils/error.utils'
-import { ErrorValidator } from '../types'
 
 export const errorHook: ErrorHandler = async ({ error, code }) => {
     if (code === 'VALIDATION') {

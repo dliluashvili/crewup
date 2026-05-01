@@ -1,12 +1,12 @@
 import { Elysia } from 'elysia'
+import { SignInUseCase } from '../usecases/sign-in.usecase'
 import { SignUpUseCase } from '../usecases/sign-up.usecase'
 import {
     SignInDto,
-    SignInDtoType,
     SignUpDto,
-    SignUpDtoType,
+    type SignInDtoType,
+    type SignUpDtoType,
 } from '../dtos/auth.dto'
-import { SignInUseCase } from '../usecases/sign-in.usecase'
 
 interface AuthRouteParams {
     signUpUseCase: SignUpUseCase

@@ -1,19 +1,21 @@
 import { Elysia } from 'elysia'
-import { userRoutes, authRoutes } from './routes'
-import { UserService } from './services/user.service'
-import { SessionService } from './services/session.service'
-import { SignUpUseCase } from './usecases/sign-up.usecase'
-import { UserRepo } from './repo/user.repo'
-import { errorHook, afterHandleHook } from './hooks'
-import { ResumeService } from './services/resume.service'
-import { CreateUserDetailUseCase } from './usecases/create-user-detail.usecase'
-import { UserSkillsRepo } from './repo/user-skills.repo'
-import { UserLanguagesRepo } from './repo/user-languages.repo'
-import { UserProfessionalLinksRepo } from './repo/user-professional-links.repo'
-import { UserSocialNetworksRepo } from './repo/user-social-networks.repo'
-import { UserWorkExperiencesRepo } from './repo/user-work-experiences.repo'
 import { createClient } from 'redis'
-import { SignInUseCase } from './usecases/sign-in.usecase'
+import { authRoutes, userRoutes } from './routes'
+import { afterHandleHook, errorHook } from './hooks'
+import { UserService, ResumeService, SessionService } from './services'
+import {
+    SignInUseCase,
+    SignUpUseCase,
+    CreateUserDetailUseCase,
+} from './usecases'
+import {
+    UserRepo,
+    UserSkillsRepo,
+    UserLanguagesRepo,
+    UserSocialNetworksRepo,
+    UserWorkExperiencesRepo,
+    UserProfessionalLinksRepo,
+} from './repo'
 
 const redisClient = await createClient()
     .on('error', (err) => console.log('Redis Client Error', err))
@@ -42,6 +44,7 @@ const signInUseCase = new SignInUseCase({
 })
 
 const createUserDetailUseCase = new CreateUserDetailUseCase({
+    sessionService,
     resumeService,
     userSkillsRepo,
     userLanguagesRepo,

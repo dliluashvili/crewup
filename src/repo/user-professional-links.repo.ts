@@ -1,6 +1,7 @@
-import { CreateUserProfessionalLinksInput } from '../inputs/user.input'
-import { prisma } from '../prisma/client'
 import { UserProfessionalLink } from '@prisma/client'
+
+import { prisma } from '../prisma/client'
+import { CreateUserProfessionalLinksInput } from '../inputs/user.input'
 
 export class UserProfessionalLinksRepo {
     async create(

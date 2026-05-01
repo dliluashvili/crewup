@@ -1,6 +1,7 @@
-import { CreateUserSocialNetworksInput } from '../inputs/user.input'
-import { prisma } from '../prisma/client'
 import { UserSocialNetworkLink } from '@prisma/client'
+
+import { prisma } from '../prisma/client'
+import { CreateUserSocialNetworksInput } from '../inputs/user.input'
 
 export class UserSocialNetworksRepo {
     async create(

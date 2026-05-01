@@ -1,17 +1,20 @@
-import { UserSkillsRepo } from '../repo/user-skills.repo'
-import { UserLanguagesRepo } from '../repo/user-languages.repo'
-import { UserProfessionalLinksRepo } from '../repo/user-professional-links.repo'
-import { UserSocialNetworksRepo } from '../repo/user-social-networks.repo'
-import { UserWorkExperiencesRepo } from '../repo/user-work-experiences.repo'
-import { ResumeService } from '../services/resume.service'
+import type { ResumeService, SessionService } from '../services'
+import type {
+    UserSkillsRepo,
+    UserLanguagesRepo,
+    UserSocialNetworksRepo,
+    UserWorkExperiencesRepo,
+    UserProfessionalLinksRepo,
+} from '../repo'
 
 interface Providers {
     resumeService: ResumeService
+    sessionService: SessionService
     userSkillsRepo: UserSkillsRepo
     userLanguagesRepo: UserLanguagesRepo
-    userProfessionalLinksRepo: UserProfessionalLinksRepo
     userSocialNetworksRepo: UserSocialNetworksRepo
     userWorkExperiencesRepo: UserWorkExperiencesRepo
+    userProfessionalLinksRepo: UserProfessionalLinksRepo
 }
 
 export class CreateUserDetailUseCase {

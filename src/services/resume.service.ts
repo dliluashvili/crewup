@@ -1,6 +1,7 @@
 import fs from 'fs'
-import { Resume } from '../mocks/resume'
+
 import { ParsedResume } from '../types'
+import { Resume } from '../mocks/resume'
 
 interface ParseParam {
     filePath: string

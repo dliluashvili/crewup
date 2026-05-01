@@ -1,6 +1,7 @@
-import { CreateUserSkillsInput } from '../inputs/user.input'
-import { prisma } from '../prisma/client'
 import { UserSkill } from '@prisma/client'
+
+import { prisma } from '../prisma/client'
+import { CreateUserSkillsInput } from '../inputs/user.input'
 
 export class UserSkillsRepo {
     async create(data: CreateUserSkillsInput): Promise<UserSkill> {

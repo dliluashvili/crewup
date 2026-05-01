@@ -1,6 +1,7 @@
-import { CreateUserWorkExperiencesInput } from '../inputs/user.input'
-import { prisma } from '../prisma/client'
 import { UserWorkExperience } from '@prisma/client'
+
+import { prisma } from '../prisma/client'
+import { CreateUserWorkExperiencesInput } from '../inputs/user.input'
 
 export class UserWorkExperiencesRepo {
     async create(

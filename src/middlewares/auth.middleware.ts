@@ -1,6 +1,7 @@
 import Elysia from 'elysia'
+
 import { ForbiddenException } from '../exceptions'
-import { type SessionService } from '../services/session.service'
+import { type SessionService } from '../services'
 
 export const authMiddleware = (sessionService: SessionService) => {
     return new Elysia().derive({ as: 'scoped' }, async ({ headers }) => {
@@ -18,6 +19,6 @@ export const authMiddleware = (sessionService: SessionService) => {
             throw new ForbiddenException()
         }
 
-        return { user }
+        return { authed: true }
     })
 }
